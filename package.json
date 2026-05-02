@@ -4,7 +4,7 @@
   "description": "Capstone Project TS Template",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && sass src/scss:dist/css --style=compressed && powershell -Command \"Copy-Item -Recurse src/assets dist/assets; Copy-Item -Recurse src/html dist/html; Copy-Item -Recurse src/dist/js dist/js; Copy-Item src/index.html dist/index.html; Get-ChildItem dist -Recurse -Filter *.html | ForEach-Object { (Get-Content $_.FullName) -replace '\\.\\./dist/', '../' -replace '\\./dist/', './' | Set-Content $_.FullName }\"",
+    "build": "tsc && sass src/scss:dist/css --style=compressed && shx cp -r src/assets dist/assets && shx cp -r src/html dist/html && shx cp -r src/dist/js dist/js && shx cp src/index.html dist/index.html",
     "lint": "npm run lint:eslint && npm run lint:style",
     "lint:eslint": "eslint .",
     "lint:style": "stylelint \"**/*.{css}\"",
@@ -31,6 +31,7 @@
     "concurrently": "^9.2.1",
     "eslint": "^10.2.0",
     "live-server": "^1.2.2",
+    "shx": "^0.4.0",
     "stylelint": "^17.6.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "stylelint-scss": "^7.0.0",
