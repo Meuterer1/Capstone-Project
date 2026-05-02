@@ -1,0 +1,130 @@
+@use "../abstracts/variables";
+@use "../base/fonts";
+
+.basic-main {
+  width: 100%;
+  background-color: variables.$background_color;
+}
+
+.basic-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 554px;
+  gap: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: variables.$background_color;
+
+  p {
+    width: 35%;
+  }
+}
+
+.about-hero {
+  background-image:
+    url("/assets/about/images/overlay.png"),
+    url("/assets/about/images/banner image.jpg");
+}
+
+.icons-cards {
+  display: flex;
+  gap: 20px;
+  margin: 100px 10%;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 20%;
+
+  img {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+.about-new-arrivals {
+  display: flex;
+  gap: 20px;
+  margin: 100px 10%;
+  justify-content: space-between;
+}
+
+.about-new-arrivals-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 45%;
+
+  & p {
+    font-size: fonts.$font_h5_size;
+  }
+}
+
+.about-new-arrivals-img {
+  width: 50%;
+  height: auto;
+  background-image:
+    url("/assets/about/images/overlay.png"),
+    url("/assets/about/images/new arrivals image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.about-team {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 100px 10%;
+  justify-content: space-between;
+  align-items: center;
+
+  & h3::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: variables.$brand_primary;
+    margin-top: 10px;
+  }
+}
+
+.team-members {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.about-team-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 30%;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.about-banner {
+  margin: 50px 10%;
+  height: 407px;
+  background-image:
+    url("/assets/about/images/overlay.png"),
+    url("/assets/homepage/images/offer of the month image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

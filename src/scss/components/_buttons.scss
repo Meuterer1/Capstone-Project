@@ -1,0 +1,97 @@
+@use "../abstracts/variables";
+@use "../base/fonts";
+@use "../abstracts/mixins";
+
+// dodać transition do hover
+// zmienić kolory przy hover
+
+.btn {
+  @include mixins.button(
+    variables.$brand_primary,
+    variables.$background_color,
+    variables.$main_background_color
+  );
+
+  //disabled
+  &[disabled] {
+    background-color: variables.$text_secondary_color;
+    color: variables.$background_color;
+    cursor: not-allowed;
+  }
+}
+
+.icon-btn {
+  background-color: transparent;
+  color: fonts.$font_bold_color;
+
+  & img {
+    filter: brightness(0) saturate(100%) invert(0.4);
+  }
+
+  &:hover {
+    color: variables.$brand_primary;
+
+    & img {
+      filter: brightness(0) saturate(100%) invert(0.6);
+    }
+  }
+}
+
+.logo-btn {
+  background-color: transparent;
+  color: variables.$brand_primary;
+  gap: 10px;
+
+  &:hover .logo {
+    background-color: variables.$main_background_color;
+  }
+
+  &:hover .logo svg {
+    background-color: variables.$main_background_color;
+  }
+}
+
+.pagination-btn {
+  @include mixins.button(
+    transparent,
+    variables.$text_color,
+    variables.$main_background_color
+  );
+  border: 2px solid variables.$brand_primary;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.pagination-arrow {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.pagination-arrow-left {
+  transform: rotate(180deg);
+  margin-right: 10px;
+}
+
+.link-btn {
+  a {
+    color: variables.$background_color;
+    font-weight: 700;
+
+    &:hover {
+      color: variables.$text_secondary_color;
+    }
+  }
+}
+
+.btn-tooltip {
+  margin-bottom: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #333;
+  color: #fff;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}

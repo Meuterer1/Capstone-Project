@@ -1,0 +1,11 @@
+@use "../abstracts/variables";
+@use "../base/fonts";
+
+.login-main {
+  margin: 50px auto;
+  width: 450px;
+  background-color: variables.$background_color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

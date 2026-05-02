@@ -1,0 +1,114 @@
+@use "../base/fonts";
+@use "../abstracts/variables";
+
+footer {
+  font-size: fonts.$font_footer_size;
+
+  & .card-box {
+    margin-top: 0;
+  }
+}
+
+.benefits {
+  height: 192px;
+  width: 100%;
+
+  color: variables.$background_color;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: start;
+  padding: 10px 10%;
+  position: relative;
+
+  background-image: url("/assets/homepage/images/footer-bg.png");
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/homepage/images/Path 18.png");
+    background-repeat: repeat;
+    background-size: 100% 35px;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+}
+
+.footer-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  & img {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 20px;
+  margin: 100px 0;
+  padding: 0 10%;
+
+  & img {
+    height: 24px;
+    width: 18px;
+  }
+
+  & h4 {
+    margin-bottom: 20px;
+  }
+
+  & .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 40%;
+  }
+
+  & .links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .contact {
+    width: 40%;
+  }
+
+  & .link-list {
+    & li {
+      margin: 8px 0;
+    }
+  }
+
+  & .company-data {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+
+    & p {
+      white-space: nowrap;
+    }
+
+    & .contact-card {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      max-width: 45%;
+      margin: 8px 0;
+    }
+
+    & .contact-card p:last-of-type {
+      white-space: wrap;
+    }
+  }
+}

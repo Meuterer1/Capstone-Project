@@ -1,0 +1,359 @@
+@use "./abstracts/mixins";
+@use "./abstracts/variables";
+@use "./base/fonts";
+@use "./base/reset";
+@use "./components/buttons";
+@use "./components/forms";
+@use "./components/product-card";
+@use "./layouts/footer";
+@use "./layouts/header";
+@use "./pages/about";
+@use "./pages/cart";
+@use "./pages/catalog";
+@use "./pages/contact";
+@use "./pages/product-details";
+@use "./pages/login";
+@use "sass:color";
+
+main {
+  font-family: fonts.$font_primary;
+  background-color: rgba(variables.$main_background_color, 0.2);
+  padding-bottom: 50px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.hero {
+  background-color: variables.$hero_background_color;
+  width: 100%;
+  height: 861px;
+  padding: 0 10%;
+  margin-top: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h2 {
+    font-weight: 900;
+    font-size: fonts.$font_h1_size;
+    color: fonts.$font_bold_color;
+  }
+
+  & p {
+    font-weight: 400;
+    font-size: calc(fonts.$font_primary_size - 1px);
+  }
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 50%;
+}
+
+.special-offer {
+  height: 566px;
+  display: flex;
+  width: 80%;
+  margin: -100px auto 100px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  margin-bottom: 100px;
+}
+
+.opinion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  width: 50%;
+  align-items: start;
+  text-align: start;
+  padding: 50px;
+  background-color: variables.$background_color;
+}
+
+.employee {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  & img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+}
+
+.employee-dsc {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+  justify-content: center;
+  padding: 50px 150px 50px 50px;
+  background-image:
+    url("/assets/homepage/images/overlay.png"),
+    url("/assets/homepage/images/suitcases main banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: variables.$background_color;
+}
+
+.card-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 30px;
+  margin-top: 70px;
+}
+
+.travel-suitcases,
+.selected-products,
+.new-products-arrival,
+.testimonials {
+  width: 80%;
+  margin: 50px auto 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.travel-suitcases {
+  & .card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: end;
+    padding: 50px 30px;
+    height: 600px;
+    color: variables.$background_color;
+    gap: 20px;
+  }
+
+  & .s1 {
+    background-image:
+      url("/assets/homepage/images/overlay 1.png"),
+      url("/assets/homepage/images/suitcase real-live.png");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  & .s2 {
+    background-image:
+      url("/assets/homepage/images/overlay 1.png"),
+      url("/assets/homepage/images/suitcase real-live-1.png");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  & .s3 {
+    background-image:
+      url("/assets/homepage/images/overlay 1.png"),
+      url("/assets/homepage/images/suitcase real-live-2.png");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  & .s4 {
+    background-image:
+      url("/assets/homepage/images/overlay 1.png"),
+      url("/assets/homepage/images/suitcase real-live-3.png");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+}
+
+// zastanowić się czy tej klasy nie przenieść do innego pliku
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  height: 100%;
+  background: #fff;
+
+  h4 {
+    width: 80%;
+    text-align: center;
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 296px;
+    height: 400px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .btn {
+    margin-top: auto;
+  }
+
+  .sale {
+    display: none;
+  }
+
+  &.sale .sale {
+    display: block;
+    @include mixins.sale;
+  }
+}
+
+.banner {
+  width: 80%;
+  height: 407px;
+  color: variables.$background_color;
+  margin: 50px auto 100px auto;
+  display: flex;
+  padding: 50px 100px;
+  gap: 50px;
+  background-image:
+    url("/assets/homepage/images/overlay 3.png"),
+    url("/assets/homepage/images/offer of the month image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: space-between;
+
+  & .banner-left,
+  .banner-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+  }
+
+  & .banner-left h2 {
+    font-size: fonts.$font_banner_size;
+  }
+
+  & .banner-left {
+    transform: translateY(-30px);
+  }
+
+  & .banner-right {
+    align-items: start;
+    gap: 40px;
+  }
+}
+
+.opinion-card {
+  display: flex;
+  height: 336px;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  text-align: center;
+
+  & img {
+    height: 98px;
+    width: 98px;
+    border-radius: 50%;
+  }
+
+  & .sign {
+    color: variables.$brand_primary;
+    font-weight: 700;
+  }
+}
+
+.testimonials {
+  margin: 50px auto 100px auto;
+}
+
+@media (max-width: variables.$breakpoint-desktop) {
+  .card-box {
+    gap: 24px;
+  }
+}
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .hero {
+    flex-direction: column;
+    padding: 40px 8%;
+    text-align: center;
+    height: auto;
+  }
+
+  .hero-left,
+  .offer,
+  .opinion {
+    width: 100%;
+  }
+
+  .special-offer {
+    flex-direction: column;
+    width: 90%;
+    margin: 50px auto;
+  }
+
+  .card-box {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .banner {
+    width: 90%;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+  .hero {
+    padding: 24px 4%;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p,
+  .banner-left h2,
+  .banner-right p {
+    font-size: 1rem;
+  }
+
+  .special-offer {
+    margin: 30px 4%;
+  }
+
+  .card-box,
+  .banner {
+    width: 100%;
+  }
+
+  .travel-suitcases,
+  .selected-products,
+  .new-products-arrival,
+  .testimonials {
+    margin: 30px 4%;
+  }
+}

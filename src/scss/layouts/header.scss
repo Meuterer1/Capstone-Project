@@ -1,0 +1,250 @@
+@use "../abstracts/variables";
+@use "../base/fonts";
+
+header {
+  position: sticky;
+  top: 0;
+
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  width: 100%;
+  background-color: aqua;
+
+  padding: 10px 0;
+
+  background-color: variables.$background_color;
+  color: variables.$brand_primary;
+  font-family: fonts.$font_primary;
+
+  & .header-top {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 80%;
+    position: relative;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      content: "";
+      width: 100%;
+      border: 1px solid variables.$header_line_color;
+      opacity: 20%;
+    }
+  }
+
+  & nav {
+    padding-top: 20px;
+
+    & ul {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      gap: 20px;
+      font-size: fonts.$font_primary_size;
+    }
+
+    & a {
+      color: fonts.$font_bold_color;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: variables.$brand_primary;
+      }
+    }
+  }
+
+  .nav-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: variables.$text_color;
+      border-radius: 2px;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    }
+  }
+
+  .account-options button,
+  .social-media button {
+    position: relative;
+  }
+
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: variables.$brand_primary;
+    color: variables.$background_color;
+    border-radius: 50%;
+    font-size: fonts.$font_small_size;
+    font-weight: 700;
+    padding: 0 6px;
+    line-height: 1;
+  }
+
+  .nav-open .nav-toggle-btn span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-open .nav-toggle-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-open .nav-toggle-btn span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+h1 {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.social-media,
+.account-options,
+.logo {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 15px;
+}
+
+.social-media i {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+}
+
+.account-options i {
+  font-size: 24px;
+  height: 30px;
+  width: 30px;
+}
+
+.logo svg {
+  color: variables.$background_color;
+  background-color: variables.$brand_primary;
+  border-radius: 10px;
+  height: 32px;
+  width: 32px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copywright {
+  font-size: fonts.$font_copywright_size;
+  color: variables.$text_color;
+  opacity: 30%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+@media (max-width: variables.$breakpoint-desktop) {
+  & .header-top {
+    width: 90%;
+  }
+
+  & nav ul {
+    gap: 15px;
+  }
+}
+
+@media (max-width: variables.$breakpoint-tablet) {
+  & .header-top {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  & nav {
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  & nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .social-media,
+  .account-options {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+  & .header-top {
+    width: 100%;
+    padding: 16px 4%;
+    gap: 16px;
+  }
+
+  .nav-toggle-btn {
+    display: flex;
+  }
+
+  & nav {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  &.nav-open nav {
+    max-height: 320px;
+    opacity: 1;
+  }
+
+  & nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 4%;
+  }
+
+  & nav a {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .logo h1 {
+    font-size: 1.1rem;
+  }
+}

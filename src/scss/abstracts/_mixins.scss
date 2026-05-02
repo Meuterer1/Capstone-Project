@@ -1,0 +1,31 @@
+@use "../abstracts/variables";
+@use "../base/fonts";
+
+@mixin button($bg_color, $color, $hover_color) {
+  background-color: $bg_color;
+  padding: 15px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color;
+  font-weight: 700;
+  width: fit-content;
+
+  &:hover {
+    color: $hover_color;
+    cursor: pointer;
+  }
+}
+
+@mixin sale {
+  content: "SALE";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: variables.$brand_primary;
+  color: variables.$background_color;
+  padding: 5px 10px;
+  font-size: fonts.$font_sale_size;
+  font-weight: 700;
+}

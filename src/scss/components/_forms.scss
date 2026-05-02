@@ -1,0 +1,95 @@
+@use "../abstracts/variables";
+@use "../base/fonts";
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+
+  label {
+    & span {
+      color: variables.$brand_primary;
+    }
+  }
+
+  input,
+  textarea {
+    padding: 5px 10px;
+    border: 1px solid variables.$brand_primary;
+    font-family: fonts.$font_primary;
+    width: 100%;
+
+    &::placeholder {
+    }
+  }
+
+  .remember-password {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: fonts.$font_form_remember_size;
+    width: 100%;
+
+    p {
+      font-size: fonts.$font_form_remember_size;
+      font-weight: 700;
+
+      a {
+        color: variables.$brand_primary;
+      }
+    }
+
+    & input {
+      width: auto;
+    }
+
+    textarea {
+      resize: none;
+      height: 200px;
+    }
+  }
+
+  .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  button.btn {
+    width: 100%;
+  }
+
+  .password-wrapper {
+    position: relative;
+    display: inline-block; // albo block, zależnie od layoutu
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding-right: 2.5rem; // miejsce na ikonkę
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      border: none;
+      padding: 0;
+      background: none;
+      cursor: pointer;
+      color: #727174; // kolor ikonki (jeśli użyjesz currentColor)
+    }
+
+    .toggle-password svg {
+      display: block;
+    }
+  }
+}

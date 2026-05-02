@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+$font_primary: "Montserrat", sans-serif;
+
+$font_bold_color: #000000;
+
+$font_primary_size: 18px;
+
+$font_h1_size: 50px;
+$font_h3_size: 40px;
+$font_h4_size: 20px;
+$font_h5_size: 17px;
+
+$font_banner_size: 223px;
+$font_product_cart_size: 30px;
+$font_product_cart_payment_size: 23px;
+$font_small_size: 16px;
+$font_footer_size: 15px;
+$font_copywright_size: 15px;
+$font_sale_size: 12px;
+$font_form_remember_size: 11px;
+
+h2 {
+  font-weight: 900;
+}
+
+h3 {
+  font-weight: 900;
+  font-size: $font_h3_size;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: $font_h4_size;
+}
+
+h5 {
+  font-weight: 700;
+  font-size: $font_h5_size;
+}
+
+p {
+  font-size: $font_primary_size;
+}
