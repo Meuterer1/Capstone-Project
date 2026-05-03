@@ -62,14 +62,19 @@ form {
     width: 100%;
   }
 
+  .password-field,
+  .password-wrapper {
+    width: 100%;
+  }
+
   .password-wrapper {
     position: relative;
-    display: inline-block; // albo block, zależnie od layoutu
+    display: inline-block;
 
     input[type="password"],
     input[type="text"] {
       width: 100%;
-      padding-right: 2.5rem; // miejsce na ikonkę
+      padding-right: 2.5rem;
     }
 
     .toggle-password {
@@ -85,7 +90,7 @@ form {
       padding: 0;
       background: none;
       cursor: pointer;
-      color: #727174; // kolor ikonki (jeśli użyjesz currentColor)
+      color: #727174;
     }
 
     .toggle-password svg {

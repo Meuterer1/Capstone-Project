@@ -112,3 +112,36 @@ footer {
     }
   }
 }
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .footer-content {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 4%;
+
+    & .left-side,
+    & .contact {
+      width: 100%;
+    }
+
+    & .links {
+      gap: 20px;
+      align-items: flex-start;
+    }
+  }
+
+  .benefits {
+    height: auto;
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+  & .links {
+    flex-direction: column;
+  }
+
+  & .company-data {
+    justify-content: center;
+    flex-direction: column;
+  }
+}

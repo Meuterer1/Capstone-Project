@@ -1,140 +1,190 @@
-import './about.js';
-import './cart.js';
-import './catalog.js';
-import './contact.js';
-import './home.js';
-import './product.js';
+import "./about.js";
+import "./cart.js";
+import "./catalog.js";
+import "./contact.js";
+import "./home.js";
+import "./product.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const navToggleBtn = document.querySelector<HTMLButtonElement>('.nav-toggle-btn');
-  const headerElement = document.querySelector('header');
-  const logoButton = document.querySelector<HTMLButtonElement>('.logo-btn');
+document.addEventListener("DOMContentLoaded", () => {
+  const navToggleBtn =
+    document.querySelector<HTMLButtonElement>(".nav-toggle-btn");
+  const headerElement = document.querySelector("header");
+  const logoButton = document.querySelector<HTMLButtonElement>(".logo-btn");
+  const loginModalOverlay = createLoginModal();
 
-  navToggleBtn?.addEventListener('click', () => {
-    headerElement?.classList.toggle('nav-open');
-  });
-
-  document.querySelectorAll('header nav a').forEach((link) => {
-    link.addEventListener('click', () => {
-      if (headerElement?.classList.contains('nav-open')) {
-        headerElement.classList.remove('nav-open');
-      }
-    });
-  });
-
-  logoButton?.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = '/index.html';
-  });
-
-  document.querySelectorAll<HTMLButtonElement>('button[title="shopping-cart icon"]').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = '/html/cart.html';
-    });
-  });
-
-  document.querySelectorAll<HTMLButtonElement>('button[title="user icon"]').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      openLoginModal();
-    });
-  });
-
-  function openLoginModal() {
-    const existingModal = document.getElementById('login-modal');
-    if (existingModal) {
-      existingModal.remove();
-    }
-
-    const modal = document.createElement('div');
-    modal.className = 'login-modal';
-    modal.id = 'login-modal';
-    modal.innerHTML = `
-      <div class="login-modal-content">
-        <button class="modal-close" aria-label="Close login">&times;</button>
-        <h2>Log In</h2>
-        <form id="login-form">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-            <span class="login-error" id="email-error"></span>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <div class="password-wrapper">
-              <input type="password" id="password" name="password" required />
-              <button type="button" class="toggle-password" aria-label="Toggle password visibility">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 3C5 3 1 7 1 10s4 7 9 7 9-4 9-7-4-7-9-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor" />
-                  <path d="M10 6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" fill="currentColor" />
-                </svg>
-              </button>
-            </div>
-            <span class="login-error" id="password-error"></span>
-          </div>
-          <button type="submit" class="btn">Log In</button>
-        </form>
+  function createLoginModal() {
+    const overlay = document.createElement("div");
+    overlay.className = "login-modal-overlay hidden";
+    overlay.innerHTML = `
+      <div class="login-modal" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+        <div class="login-modal-header">
+          <h2 id="login-modal-title">Log In</h2>
+          <button type="button" class="login-modal-close" aria-label="Close login modal">×</button>
+        </div>
+        <div class="login-modal-body"></div>
       </div>
     `;
 
-    document.body.appendChild(modal);
+    document.body.append(overlay);
 
-    const closeBtn = modal.querySelector<HTMLButtonElement>('.modal-close');
-    const form = modal.querySelector<HTMLFormElement>('#login-form');
-    const emailInput = modal.querySelector<HTMLInputElement>('#email');
-    const passwordInput = modal.querySelector<HTMLInputElement>('#password');
-    const togglePasswordBtn = modal.querySelector<HTMLButtonElement>('.toggle-password');
+    const closeButton =
+      overlay.querySelector<HTMLButtonElement>(".login-modal-close");
+    closeButton?.addEventListener("click", closeLoginModal);
 
-    closeBtn?.addEventListener('click', () => {
-      modal.remove();
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.remove();
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) {
+        closeLoginModal();
       }
     });
 
-    togglePasswordBtn?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const type = passwordInput?.type === 'password' ? 'text' : 'password';
-      if (passwordInput) passwordInput.type = type;
-    });
-
-    emailInput?.addEventListener('blur', () => {
-      validateEmail();
-    });
-
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (validateEmail() && validatePassword()) {
-        modal.remove();
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !overlay.classList.contains("hidden")) {
+        closeLoginModal();
       }
     });
 
-    function validateEmail(): boolean {
-      const value = emailInput?.value || '';
+    return overlay;
+  }
+
+  function setupPasswordToggle() {
+    const toggleButtons =
+      loginModalOverlay.querySelectorAll<HTMLButtonElement>(".toggle-password");
+    toggleButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const passwordField = button
+          .closest(".password-wrapper")
+          ?.querySelector<HTMLInputElement>("#password");
+        if (!passwordField) return;
+
+        const isPasswordHidden = passwordField.type === "password";
+        passwordField.type = isPasswordHidden ? "text" : "password";
+        button.setAttribute("aria-pressed", String(isPasswordHidden));
+        button.setAttribute(
+          "aria-label",
+          isPasswordHidden ? "Hide password" : "Show password",
+        );
+      });
+    });
+  }
+
+  function setupFormValidation() {
+    const form =
+      loginModalOverlay.querySelector<HTMLFormElement>(".login-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailInput = form.querySelector<HTMLInputElement>("#email");
+      const passwordInput = form.querySelector<HTMLInputElement>("#password");
+
+      if (!emailInput?.value || !passwordInput?.value) {
+        return;
+      }
+
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const errorEl = modal.querySelector<HTMLSpanElement>('#email-error');
-      if (!emailRegex.test(value)) {
-        if (errorEl) errorEl.textContent = 'Please enter a valid email address';
-        return false;
+      if (!emailRegex.test(emailInput.value)) {
+        alert("Please enter a valid email address.");
+        return;
       }
-      if (errorEl) errorEl.textContent = '';
-      return true;
-    }
 
-    function validatePassword(): boolean {
-      const value = passwordInput?.value || '';
-      const errorEl = modal.querySelector<HTMLSpanElement>('#password-error');
-      if (!value) {
-        if (errorEl) errorEl.textContent = 'Password is required';
-        return false;
+      if (passwordInput.value.length === 0) {
+        alert("Password is required.");
+        return;
       }
-      if (errorEl) errorEl.textContent = '';
-      return true;
+
+      form.style.display = "none";
+      const successMessage = document.createElement("div");
+      successMessage.className = "login-success-message";
+      successMessage.innerHTML =
+        "<h3>Login successful!</h3><p>Welcome back.</p>";
+
+      const modalBody =
+        loginModalOverlay.querySelector<HTMLElement>(".login-modal-body");
+      if (modalBody) {
+        modalBody.appendChild(successMessage);
+      }
+
+      setTimeout(() => {
+        closeLoginModal();
+        form.style.display = "";
+        form.reset();
+      }, 2000);
+    });
+  }
+
+  async function loadLoginModalContent() {
+    const modalBody =
+      loginModalOverlay.querySelector<HTMLElement>(".login-modal-body");
+    if (!modalBody || modalBody.innerHTML.trim()) return;
+
+    try {
+      const response = await fetch("/html/login.html");
+      if (!response.ok) throw new Error("Unable to load login content");
+
+      const htmlText = await response.text();
+      const parser = new DOMParser();
+      const documentFragment = parser.parseFromString(htmlText, "text/html");
+      const mainSection = documentFragment.querySelector("main.login-main");
+      modalBody.innerHTML = mainSection
+        ? mainSection.innerHTML
+        : "<p>Unable to load login form.</p>";
+      setupPasswordToggle();
+      setupFormValidation();
+    } catch {
+      if (modalBody) {
+        modalBody.innerHTML = "<p>Unable to load login form.</p>";
+      }
     }
   }
-});
 
+  function openLoginModal() {
+    loginModalOverlay.classList.remove("hidden");
+    loginModalOverlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLoginModal() {
+    loginModalOverlay.classList.remove("open");
+    loginModalOverlay.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  navToggleBtn?.addEventListener("click", () => {
+    headerElement?.classList.toggle("nav-open");
+    console.log("Navigation toggled");
+  });
+
+  document.querySelectorAll("header nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (headerElement?.classList.contains("nav-open")) {
+        headerElement.classList.remove("nav-open");
+      }
+    });
+  });
+
+  logoButton?.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = "/index.html";
+  });
+
+  document
+    .querySelectorAll<HTMLButtonElement>('button[title="shopping-cart icon"]')
+    .forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "/html/cart.html";
+      });
+    });
+
+  document
+    .querySelectorAll<HTMLButtonElement>('button[title="user icon"]')
+    .forEach((button) => {
+      button.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await loadLoginModalContent();
+        openLoginModal();
+      });
+    });
+});

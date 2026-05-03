@@ -1,4 +1,6 @@
-const contactSubmitBtn = document.getElementById("contact-submit-btn") as HTMLButtonElement;
+const contactSubmitBtn = document.getElementById(
+  "contact-submit-btn",
+) as HTMLButtonElement;
 const contactForm = document.querySelector(".contact-form") as HTMLFormElement;
 const nameInput = document.getElementById("name") as HTMLInputElement;
 const emailInput = document.getElementById("email") as HTMLInputElement;
@@ -16,7 +18,9 @@ function isValidEmail(email: string): boolean {
 
 // Function to display error message for a field
 function displayError(fieldId: string, message: string): void {
-  const errorElement = document.getElementById(`error-${fieldId}`) as HTMLSpanElement;
+  const errorElement = document.getElementById(
+    `error-${fieldId}`,
+  ) as HTMLSpanElement;
   if (errorElement) {
     errorElement.textContent = message;
     errorElement.style.display = message ? "block" : "none";
@@ -76,34 +80,38 @@ messageInput?.addEventListener("input", () => {
 
 // Function to validate entire form
 function validateForm(): void {
-  const isNameValid = nameInput.value.trim() !== "";
-  const isEmailValid = emailInput.value.trim() !== "" && isValidEmail(emailInput.value.trim());
-  const isTopicValid = topicInput.value.trim() !== "";
-  const isMessageValid = messageInput.value.trim() !== "";
-  
-  const isFormValid = isNameValid && isEmailValid && isTopicValid && isMessageValid;
-  contactSubmitBtn.disabled = !isFormValid;
+  const isNameValid = nameInput?.value.trim() !== "";
+  const isEmailValid =
+    emailInput?.value.trim() !== "" && isValidEmail(emailInput?.value.trim());
+  const isTopicValid = topicInput?.value.trim() !== "";
+  const isMessageValid = messageInput?.value.trim() !== "";
+
+  const isFormValid =
+    isNameValid && isEmailValid && isTopicValid && isMessageValid;
+  if (contactSubmitBtn) {
+    contactSubmitBtn.disabled = !isFormValid;
+  }
 }
 
 // Form submission handler
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
-  
+
   clearErrors();
-  
-  const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
-  const topic = topicInput.value.trim();
-  const message = messageInput.value.trim();
-  
+
+  const name = nameInput?.value.trim();
+  const email = emailInput?.value.trim();
+  const topic = topicInput?.value.trim();
+  const message = messageInput?.value.trim();
+
   // Final validation before submission
   let isValid = true;
-  
+
   if (name === "") {
     displayError("name", "Name is required");
     isValid = false;
   }
-  
+
   if (email === "") {
     displayError("email", "Email is required");
     isValid = false;
@@ -111,30 +119,31 @@ contactForm?.addEventListener("submit", (event) => {
     displayError("email", "Please enter a valid email address");
     isValid = false;
   }
-  
+
   if (topic === "") {
     displayError("topic", "Topic is required");
     isValid = false;
   }
-  
+
   if (message === "") {
     displayError("message", "Message is required");
     isValid = false;
   }
-  
+
   if (!isValid) {
     return;
   }
-  
+
   // Show success message
-  formMessage.textContent = "Thank you for your feedback! We will contact you soon.";
+  formMessage.textContent =
+    "Thank you for your feedback! We will contact you soon.";
   formMessage.style.color = "#4CAF50";
   formMessage.style.marginTop = "1rem";
   formMessage.style.padding = "1rem";
   formMessage.style.backgroundColor = "#E8F5E9";
   formMessage.style.borderRadius = "4px";
   formMessage.style.border = "1px solid #4CAF50";
-  
+
   // Reset form after 2 seconds
   setTimeout(() => {
     contactForm.reset();

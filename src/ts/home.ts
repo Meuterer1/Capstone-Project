@@ -10,7 +10,7 @@ async function init() {
 
 async function fetchProducts(): Promise<Product[]> {
   try {
-    const response = await fetch("./assets/data.json");
+    const response = await fetch("../assets/data.json");
     if (!response.ok) throw new Error("Unable to load products");
     const data = await response.json();
     return data.data;

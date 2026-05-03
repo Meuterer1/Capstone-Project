@@ -42,3 +42,113 @@ h5 {
 p {
   font-size: $font_primary_size;
 }
+
+// max-width: 1024px
+@media (max-width: 1024px) {
+  $font_primary_size: 17px;
+  $font_h1_size: 42px;
+  $font_h3_size: 34px;
+  $font_h4_size: 19px;
+  $font_h5_size: 16px;
+
+  $font_banner_size: 160px;
+  $font_product_cart_size: 26px;
+  $font_product_cart_payment_size: 21px;
+  $font_small_size: 15px;
+  $font_footer_size: 14px;
+  $font_copywright_size: 14px;
+
+  body {
+    font-size: $font_primary_size;
+  }
+
+  h1 {
+    font-size: $font_h1_size;
+  }
+
+  h3 {
+    font-size: $font_h3_size;
+  }
+
+  h4 {
+    font-size: $font_h4_size;
+  }
+
+  h5 {
+    font-size: $font_h5_size;
+  }
+}
+
+// max-width: 768px
+@media (max-width: 768px) {
+  $font_primary_size: 16px;
+  $font_h1_size: 36px;
+  $font_h3_size: 30px;
+  $font_h4_size: 18px;
+  $font_h5_size: 16px;
+
+  $font_banner_size: 110px;
+  $font_product_cart_size: 22px;
+  $font_product_cart_payment_size: 19px;
+  $font_small_size: 14px;
+  $font_footer_size: 14px;
+  $font_copywright_size: 13px;
+
+  body {
+    font-size: $font_primary_size;
+  }
+
+  h1 {
+    font-size: $font_h1_size;
+  }
+
+  h3 {
+    font-size: $font_h3_size;
+  }
+
+  h4 {
+    font-size: $font_h4_size;
+  }
+
+  h5 {
+    font-size: $font_h5_size;
+  }
+}
+
+// max-width: 320px
+@media (max-width: 320px) {
+  $font_primary_size: 16px;
+  $font_h1_size: 28px;
+  $font_h3_size: 24px;
+  $font_h4_size: 17px;
+  $font_h5_size: 15px;
+
+  $font_banner_size: 52px;
+  $font_product_cart_size: 20px;
+  $font_product_cart_payment_size: 17px;
+  $font_small_size: 14px;
+  $font_footer_size: 13px;
+  $font_copywright_size: 12px;
+  $font_sale_size: 12px;
+  $font_form_remember_size: 12px;
+
+  body {
+    font-size: $font_primary_size;
+  }
+
+  h1 {
+    font-size: $font_h1_size;
+  }
+
+  h3 {
+    font-size: $font_h3_size;
+  }
+
+  h4 {
+    font-size: $font_h4_size;
+  }
+
+  h5 {
+    font-size: $font_h5_size;
+  }
+}

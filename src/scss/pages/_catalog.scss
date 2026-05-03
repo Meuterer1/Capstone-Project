@@ -108,36 +108,36 @@ aside {
   display: flex;
   gap: 10px;
   align-items: center;
+  cursor: pointer;
 
-  .image-wrapper {
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
+  &:hover {
+    opacity: 0.95;
+  }
+  overflow: hidden;
 
-    & img {
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-      object-position: center;
-      display: block;
-      box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
-    }
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
+    display: block;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+  }
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  h6 {
+    font-size: fonts.$font_small_size;
+    color: fonts.$font_bold_color;
   }
 
-  .product-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-    h6 {
-      font-size: fonts.$font_small_size;
-      color: fonts.$font_bold_color;
-    }
-
-    p {
-      font-size: fonts.$font_small_size;
-      color: variables.$text_secondary_color;
-    }
+  p {
+    font-size: fonts.$font_small_size;
+    color: variables.$text_secondary_color;
   }
 }
 

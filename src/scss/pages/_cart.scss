@@ -130,3 +130,136 @@
     width: 50%;
   }
 }
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .cart-content {
+    margin: 30px 5%;
+
+    & table {
+      display: block;
+      width: 100%;
+      border: none;
+      font-size: fonts.$font_small_size;
+      border-spacing: 0;
+
+      & thead {
+        display: none;
+      }
+
+      & tbody {
+        display: grid;
+        gap: 20px;
+      }
+
+      & tbody tr {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        background-color: variables.$background_color;
+      }
+
+      & tbody tr td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: none;
+        min-width: 0;
+      }
+
+      & tbody tr td::before {
+        content: "";
+        display: inline-block;
+        min-width: 110px;
+        margin-right: 12px;
+        font-weight: 700;
+        text-align: left;
+        color: variables.$text_color;
+      }
+
+      & tbody tr td:nth-of-type(1)::before {
+        content: "Image";
+      }
+
+      & tbody tr td:nth-of-type(2)::before {
+        content: "Product";
+      }
+
+      & tbody tr td:nth-of-type(3)::before {
+        content: "Price";
+      }
+
+      & tbody tr td:nth-of-type(4)::before {
+        content: "Quantity";
+      }
+
+      & tbody tr td:nth-of-type(5)::before {
+        content: "Total";
+      }
+
+      & tbody tr td:nth-of-type(6)::before {
+        content: "Remove";
+      }
+
+      & img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+  .cart-summary {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .cart-total {
+    margin-top: 30px;
+    padding: 20px;
+    width: 100%;
+
+    .cart-total-info {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #checkout-btn {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+  .cart-content {
+    margin: 20px 5%;
+
+    & table {
+      font-size: fonts.$font_small_size;
+
+      & img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  .cart-summary {
+    gap: 10px;
+  }
+
+  .cart-total {
+    padding: 20px;
+
+    .cart-total-info {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #checkout-btn {
+      width: 100%;
+    }
+  }
+}

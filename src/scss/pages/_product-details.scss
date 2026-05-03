@@ -224,39 +224,6 @@
     gap: 5%;
   }
 
-  & .review {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 45%;
-
-    img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-    }
-
-    .review-card {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-      margin: 50px 0;
-    }
-
-    & .reviewer-info {
-      display: flex;
-      gap: 30px;
-
-      .reviewer-name-rating {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        width: 100%;
-      }
-    }
-  }
-
   .rewiev-name {
     display: flex;
     gap: 20px;
@@ -272,16 +239,49 @@
     font-size: fonts.$font_sale_size;
     color: variables.$header_line_color;
   }
+}
 
-  .add-review {
-    width: 45%;
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 45%;
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  .review-card {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center;
+    margin: 50px 0;
+  }
 
-    & p {
-      font-size: fonts.$font_sale_size;
+  & .reviewer-info {
+    display: flex;
+    gap: 30px;
+
+    .reviewer-name-rating {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
     }
+  }
+}
+
+.add-review {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & p {
+    font-size: fonts.$font_sale_size;
   }
 }
 
@@ -358,5 +358,59 @@
   label {
     font-size: fonts.$font_sale_size;
     color: variables.$header_line_color;
+  }
+}
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .product-cart {
+    flex-direction: column;
+    gap: 30px;
+
+    .product-cart-images,
+    .product-cart-info {
+      width: 100%;
+    }
+  }
+
+  .content-names {
+    gap: 30px;
+  }
+
+  .you-may-also-like-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .review,
+  .add-review {
+    width: 100%;
+  }
+
+  .reviews.active {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .review-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+  .product-details-main {
+    padding: 30px 5%;
+  }
+
+  .product-cart-images img {
+    height: auto;
+    width: 100%;
+  }
+
+  .content-names {
+    gap: 20px;
+  }
+
+  .you-may-also-like-content {
+    gap: 20px;
   }
 }

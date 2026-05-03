@@ -1,0 +1,38 @@
+@use "../abstracts/variables";
+@use "../base/fonts";
+
+.icons-cards {
+  display: flex;
+  gap: 20px;
+  margin: 100px 10%;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 20%;
+
+  img {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+@media (max-width: variables.$breakpoint-tablet) {
+  .icons-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .icon-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: variables.$breakpoint-mobile) {
+}

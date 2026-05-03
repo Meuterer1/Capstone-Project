@@ -83,10 +83,7 @@
           </button>
         </div>
         <div class="account-options">
-          <button
-            class="icon-btn btn"
-            title="user icon"
-            onclick="window.location.href='/html/login.html'">
+          <button class="icon-btn btn" title="user icon">
             <svg
               width="30"
               height="33"
@@ -133,9 +130,9 @@
       </nav>
     </header>
     <main class="login-main">
-      <form action="submit">
+      <form action="submit" class="login-form">
         <label for="email">Email address <span>*</span></label>
-        <input type="text" id="email" name="email" required />
+        <input type="email" id="email" name="email" required />
         <label for="password">Password <span>*</span></label>
         <div class="password-field">
           <div class="password-wrapper">
@@ -143,7 +140,8 @@
               id="password"
               name="password"
               type="password"
-              autocomplete="current-password" />
+              autocomplete="current-password"
+              required />
 
             <button
               type="button"
@@ -201,7 +199,7 @@
         <div class="left-side">
           <div class="links">
             <div class="link-list">
-              <h4>About Us</h4>
+              <h4><a href="/html/about.html">About Us</a></h4>
               <ul>
                 <li>
                   <a href="#">Organisation</a>
@@ -256,7 +254,7 @@
         </div>
         <div class="contact">
           <div class="contact-left">
-            <h4>Contact Us</h4>
+            <h4><a href="/html/contact.html">Contact Us</a></h4>
             <p>
               Bendum dolor eu varius. Morbi fermentum velitsodales egetonec.
               volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac

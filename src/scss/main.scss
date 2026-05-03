@@ -211,6 +211,12 @@ main {
     margin-top: auto;
   }
 
+  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+  }
+
   .sale {
     display: none;
   }
@@ -307,6 +313,10 @@ main {
     width: 100%;
   }
 
+  .travel-suitcases {
+    margin-top: 200px;
+  }
+
   .special-offer {
     flex-direction: column;
     width: 90%;
@@ -323,6 +333,16 @@ main {
     flex-direction: column;
     padding: 30px;
     gap: 20px;
+  }
+
+  .banner .banner-left,
+  .banner .banner-right {
+    width: 100%;
+    padding: 0;
+
+    & h2 {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -341,6 +361,10 @@ main {
     font-size: 1rem;
   }
 
+  .travel-suitcases {
+    margin-top: 600px;
+  }
+
   .special-offer {
     margin: 30px 4%;
   }
@@ -350,10 +374,17 @@ main {
     width: 100%;
   }
 
-  .travel-suitcases,
-  .selected-products,
-  .new-products-arrival,
-  .testimonials {
-    margin: 30px 4%;
+  .banner {
+    height: auto;
+  }
+
+  .banner .banner-left,
+  .banner .banner-right {
+    width: 100%;
+    padding: 0;
+
+    & h2 {
+      font-size: 1.75rem;
+    }
   }
 }
