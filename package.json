@@ -4,7 +4,7 @@
   "description": "Capstone Project TS Template",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && sass src/scss:dist/css --style=compressed && shx cp -r src/assets dist/assets && shx cp -r src/html dist/html && shx cp -r src/dist/js dist/js && shx cp src/index.html dist/index.html",
+    "build": "tsc && sass src/scss:dist/css --style=compressed && shx cp -r src/assets dist/assets && shx cp -r src/html dist/html && shx cp -r src/dist/js dist/js && shx cp src/index.html dist/index.html && node scripts/fix-paths.js",
     "lint": "npm run lint:eslint && npm run lint:style",
     "lint:eslint": "eslint .",
     "lint:style": "stylelint \"**/*.{css}\"",
